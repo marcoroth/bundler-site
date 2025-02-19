@@ -75,14 +75,14 @@ The specifier `~>` has a special meaning, best shown by example.
 If a gem's main file is different than the gem name, specify how to require it.
 
 ~~~ruby
-gem 'rack-cache', :require => 'rack/cache'
+gem 'rack-cache', require: 'rack/cache'
 gem 'sqlite3'
 ~~~
 
 Specify `:require => false` to prevent bundler from requiring the gem, but still install it and maintain dependencies.
 
 ~~~ruby
-gem 'rspec', :require => false
+gem 'rspec', require: false
 gem 'sqlite3'
 ~~~
 
@@ -95,7 +95,7 @@ If some of your gems need to be fetched from a private gem server, this default 
 For a gem server that contains a single gem, it is easiest to use the `:source` option on that gem.
 
 ~~~ruby
-gem 'my_gem', '1.0', :source => 'https://gems.example.com'
+gem 'my_gem', '1.0', source: 'https://gems.example.com'
 ~~~
 
 If several gems come from the same server, you can use a `source` block to group them together.
@@ -114,7 +114,7 @@ more valid gems. Specify what to check out with `:tag`,
 `:branch`, or `:ref`. The default is the `master` branch.
 
 ~~~ruby
-gem 'nokogiri', :git => 'https://github.com/tenderlove/nokogiri.git', :branch => '1.4'
+gem 'nokogiri', git: 'https://github.com/tenderlove/nokogiri.git', branch: '1.4'
 ~~~
 
 If the git repository does not contain a `.gemspec` file, bundler
@@ -127,7 +127,7 @@ you probably shouldn't use the gem from git.
 If you would like to use an unpacked gem directly from the filesystem, simply set the `:path` option to the path containing the gem's files.
 
 ~~~ruby
-gem 'extracted_library', :path => './vendor/extracted_library'
+gem 'extracted_library', path: './vendor/extracted_library'
 ~~~
 
 If you would like to use multiple local gems directly from the filesystem, you can set a global `path` option to the path containing the gem's files.
@@ -143,8 +143,8 @@ end
 Dependencies can be placed into groups. Groups can be ignored at install-time (using `--without`) or required all at once (using `Bundler.require`).
 
 ~~~ruby
-gem 'wirble', :group => :development
-gem 'debugger', :group => [:development, :test]
+gem 'wirble', group: :development
+gem 'debugger', group: [:development, :test]
 
 group :test do
   gem 'rspec'
@@ -165,7 +165,7 @@ If the version check does not match, Bundler will raise an exception. This will 
 You can be more specific with the `:engine` and `:engine_version` options.
 
 ~~~ruby
-ruby '1.9.3', :engine => 'jruby', :engine_version => '1.6.7'
+ruby '1.9.3', engine: 'jruby', engine_version: '1.6.7'
 ~~~
 
 <a href="./gemfile_ruby.html" class="btn btn-primary">Learn More: Ruby Directive</a>
